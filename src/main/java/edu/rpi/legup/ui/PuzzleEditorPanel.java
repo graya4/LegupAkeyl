@@ -139,10 +139,10 @@ public class PuzzleEditorPanel extends LegupPanel implements IHistoryListener {
         redo.addActionListener((ActionEvent) ->
                 GameBoardFacade.getInstance().getHistory().redo());
         if (os.equals("mac")) {
-            redo.setAccelerator(KeyStroke.getKeyStroke('Z', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() + InputEvent.SHIFT_DOWN_MASK));
+            redo.setAccelerator(KeyStroke.getKeyStroke('Y', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
         }
         else {
-            redo.setAccelerator(KeyStroke.getKeyStroke('Z', InputEvent.CTRL_DOWN_MASK | InputEvent.SHIFT_DOWN_MASK));
+            redo.setAccelerator(KeyStroke.getKeyStroke('Y', InputEvent.CTRL_DOWN_MASK));
         }
 
         menus[1].add(fitBoardToScreen);
