@@ -116,6 +116,12 @@ public class ElementController implements MouseListener, MouseMotionListener, Ac
             }
             else {
                 if (selection != null) {
+                    System.out.println("SELECTION IS NOT NULL");
+                    Point point = e.getPoint();
+                    Point scaledPoint = new Point((int) Math.floor(point.x / (30 * this.boardView.getScale())), (int) Math.floor(point.y / (30 * this.boardView.getScale())));
+                    selection.setMousePoint(scaledPoint);
+                    System.out.println(selection.getMousePoint());
+                    System.out.println(selection.getSelectedViews());
                     ICommand edit = new EditDataCommand(elementView, selection, e);
                     if (edit.canExecute()) {
                         edit.execute();
@@ -125,10 +131,14 @@ public class ElementController implements MouseListener, MouseMotionListener, Ac
                         }
                     }
                     else {
+                        System.out.println("CANT EXECUTE");
                         if (treePanel != null) {
                             treePanel.updateError(edit.getError());
                         }
                     }
+                }
+                else{
+                    System.out.println("SELECTION IS NULL");
                 }
             }
         }

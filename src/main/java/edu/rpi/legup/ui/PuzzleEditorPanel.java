@@ -12,6 +12,7 @@ import edu.rpi.legup.model.PuzzleExporter;
 import edu.rpi.legup.save.ExportFileException;
 import edu.rpi.legup.save.InvalidFileFormatException;
 import edu.rpi.legup.ui.boardview.BoardView;
+import edu.rpi.legup.ui.proofeditorui.treeview.TreeView;
 import edu.rpi.legup.ui.puzzleeditorui.elementsview.ElementFrame;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,6 +34,7 @@ public class PuzzleEditorPanel extends LegupPanel implements IHistoryListener {
     private JFrame frame;
     private JButton[] buttons;
     JSplitPane splitPanel;
+    private TreeView treeView;
     private JButton[] toolBarButtons;
     private JPanel elementPanel;
     private DynamicView dynamicBoardView;
@@ -224,6 +226,9 @@ public class PuzzleEditorPanel extends LegupPanel implements IHistoryListener {
 
     public void loadPuzzleFromHome(String game, int rows, int columns) throws IllegalArgumentException {
         GameBoardFacade facade = GameBoardFacade.getInstance();
+        if(facade.getLegupUI().getTreePanel() == null){
+            facade.getLegupUI().getProofEditor().setupContent();
+        }
         try {
             facade.loadPuzzle(game, rows, columns);
         }
