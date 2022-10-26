@@ -3,8 +3,14 @@ package edu.rpi.legup.controller;
 import java.awt.*;
 import java.awt.event.*;
 
+import edu.rpi.legup.model.Puzzle;
+import edu.rpi.legup.ui.proofeditorui.treeview.TreeElementView;
+import edu.rpi.legup.ui.proofeditorui.treeview.TreeView;
+import edu.rpi.legup.ui.proofeditorui.treeview.TreeViewSelection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import static edu.rpi.legup.app.GameBoardFacade.getInstance;
 
 public class BoardController extends Controller {
     protected Point lastLeftMousePoint;
@@ -49,6 +55,7 @@ public class BoardController extends Controller {
      */
     @Override
     public void mouseReleased(MouseEvent e) {
+
         super.mouseReleased(e);
     }
 
